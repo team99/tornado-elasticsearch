@@ -36,10 +36,9 @@ except ImportError:
     from urllib.parse import urlencode
 from tornado import version
 
-__version__ = '0.5.0'
+__version__ = '0.5.0-team99'
 
 LOGGER = logging.getLogger(__name__)
-
 
 class AsyncHttpConnection(Connection):
     """Add Tornado Asynchronous support to ElasticSearch.
@@ -57,6 +56,7 @@ class AsyncHttpConnection(Connection):
     _auth_password = None
     _user_agent = 'tornado_elasticsearch %s/Tornado %s' % (__version__, version)
     ssl_transport_schema = 'https'
+    transport_schema = "http"
 
     def __init__(self, host='localhost', port=9200, http_auth=None,
                  use_ssl=False, request_timeout=None, max_clients=10, **kwargs):
